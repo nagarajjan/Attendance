@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .staff-member {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registered Staff Members</h1>
+
+        {% if staff %}
+        {% for member in staff %}
+        <div class="staff-member">
+            <!-- In a full implementation, you'd show the photo here: -->
+            <!-- <img src="/uploads/{{ member.photo_path }}" alt="Photo" class="employee-photo"> -->
+            <strong>{{ member.name }}</strong> (ID: {{ member.employee_id }})
+            <!-- Add link to view attendance history for this person -->
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No staff members registered yet. Please register a new member.</p>
+        {% endif %}
+
+        <p><a href="/">Back to Attendance</a> | <a href="/register">Register New Staff</a></p>
+    </div>
+</body>
+</html>

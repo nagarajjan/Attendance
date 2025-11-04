@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Staff</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="{{ url_for('index') }}">Attendance Capture</a>
+        <a href="{{ url_for('register_form') }}">Register Staff</a>
+        <a href="{{ url_for('staff_list') }}">Staff List</a>
+        <a href="{{ url_for('access_logs') }}">Access Logs</a>
+    </nav>
+
+    <div class="container">
+        <h1>Register New Staff Member</h1>
+
+        <!-- Flash messages display here -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/register" enctype="multipart/form-data">
+
+            <label for="employeeName">Full Name:</label>
+            <input type="text" id="employeeName" name="employeeName" required>
+
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" id="employeeId" name="employeeId" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="contactInfo">Contact Information:</label>
+            <input type="text" id="contactInfo" name="contactInfo">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+
+            <label for="allowedStart">Allowed Start Time (HH:MM):</label>
+            <input type="time" id="allowedStart" name="allowedStart">
+
+            <label for="allowedEnd">Allowed End Time (HH:MM):</label>
+            <input type="time" id="allowedEnd" name="allowedEnd">
+
+            <label for="employeePhoto">Upload Photo (Face must be clear):</label>
+            <input type="file" id="employeePhoto" name="employeePhoto" accept="image/jpeg, image/png" required>
+
+            <button type="submit">Register Staff</button>
+        </form>
+    </div>
+</body>
+</html>

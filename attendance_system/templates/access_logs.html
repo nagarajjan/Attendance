@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Logs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="{{ url_for('index') }}">Attendance Capture</a>
+        <a href="{{ url_for('register_form') }}">Register Staff</a>
+        <a href="{{ url_for('staff_list') }}">Staff List</a>
+        <a href="{{ url_for('access_logs') }}">Access Logs</a>
+    </nav>
+
+    <div class="container">
+        <h1>Access Logs</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Employee ID</th>
+                    <th>Status</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.employee_id if log.employee_id else 'Visitor' }}</td>
+                    <td>{{ log.access_status }}</td>
+                    <td>{{ log.reason }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

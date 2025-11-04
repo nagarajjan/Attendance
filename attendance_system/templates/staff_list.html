@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="{{ url_for('index') }}">Attendance Capture</a>
+        <a href="{{ url_for('register_form') }}">Register Staff</a>
+        <a href="{{ url_for('staff_list') }}">Staff List</a>
+        <a href="{{ url_for('access_logs') }}">Access Logs</a>
+    </nav>
+
+    <div class="container">
+        <h1>Registered Staff Members</h1>
+
+        {% if staff %}
+        {% for member in staff %}
+        <div class="staff-card">
+            <!-- Displaying the image from the uploads folder -->
+            <img src="{{ url_for('static', filename='../uploads/' + member.photo_path) }}"
+                 alt="Photo of {{ member.name }}"
+                 class="employee-photo-small"
+                 onerror="this.onerror=null; this.src='{{ url_for('static', filename='placeholder.png') }}';">
+
+            <div class="staff-details">
+                <h4>{{ member.name }}</h4>
+                <p>ID: {{ member.employee_id }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No staff members registered yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

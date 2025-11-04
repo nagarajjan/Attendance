@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Access System Dashboard</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+            nav a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Campus Access System Dashboard</h1>
+    <nav>
+        <a href="{{ url_for('add_staff') }}">Add New Staff</a>
+        <a href="{{ url_for('list_staff') }}">View Staff List</a>
+        <a href="{{ url_for('access_logs') }}">View Access Logs</a>
+    </nav>
+    <hr>
+    <p>Use the navigation links above to manage staff and view reports.</p>
+</body>
+</html>
+

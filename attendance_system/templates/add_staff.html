@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Staff Member</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+        }
+
+        input {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Staff Member</h1>
+    <a href="{{ url_for('index') }}">Back to Dashboard</a>
+    <hr>
+    <form method="POST">
+        <div class="form-group">
+            <label for="employee_id">Employee ID:</label>
+            <input type="text" id="employee_id" name="employee_id" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="start_time">Allowed Start Time (HH:MM):</label>
+            <input type="text" id="start_time" name="start_time" placeholder="e.g., 08:00" required>
+        </div>
+        <div class="form-group">
+            <label for="end_time">Allowed End Time (HH:MM):</label>
+            <input type="text" id="end_time" name="end_time" placeholder="e.g., 17:00" required>
+        </div>
+        <button type="submit">Add Staff</button>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="{{ url_for('index') }}">Attendance Capture</a>
+        <a href="{{ url_for('register_form') }}">Register Staff</a>
+        <a href="{{ url_for('staff_list') }}">Staff List</a>
+        <a href="{{ url_for('access_logs') }}">Access Logs</a>
+    </nav>
+
+    <div class="container">
+        <h1>Attendance Portal</h1>
+
+        <div class="camera-config">
+            <label for="cameraSelection">Select Camera Device:</label>
+            <select id="cameraSelection"></select>
+            <button onclick="applyCameraSettings()">Apply Camera</button>
+        </div>
+
+        <div class="video-container">
+            <video id="videoElement" autoplay></video>
+            <img id="photoPreview" class="hidden" alt="Captured Photo Preview">
+        </div>
+
+        <div class="controls">
+            <button id="captureButton">Capture Photo</button>
+            <button id="submitButton" class="hidden">Submit Attendance</button>
+            <button id="retryButton" class="hidden" onclick="resetCapture()">Retry</button>
+        </div>
+
+        <p id="statusMessage"></p>
+
+        <canvas id="canvasElement" class="hidden"></canvas>
+        <input type="hidden" id="photoData">
+    </div>
+
+    <!-- Link the external JavaScript file -->
+    <script src="{{ url_for('static', filename='camera.js') }}"></script>
+</body>
+</html>
